@@ -1,11 +1,12 @@
+import controller.RegionController;
 import tools.Connect;
 
 public class App {
 
     public static void main(String[] args) throws Exception {
-        Integer value = 10;
+        RegionController regionController = new RegionController();
 
-        System.out.println("value : " + value);
+        regionController.getAll();
     }
 
 }

@@ -34,14 +34,6 @@ public class RegionDAO {
         return regions;
     }
 
-    public void connect(){
-        String sql = "SELECT * FROM regions";
-        try(PreparedStatement preparedStatement = connect.getConnect().prepareStatement(sql);
-            ResultSet resultSet = preparedStatement.executeQuery()){
-            
-            System.out.println("Connected");
-        }catch(SQLException exception){
-            throw new RuntimeErrorException(new Error(exception.getMessage()));
-        }
-    }
+
+    
 }

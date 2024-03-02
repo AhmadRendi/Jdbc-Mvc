@@ -12,7 +12,8 @@ public class Connect {
     private Connection connection;
 
     public Connection getConnect(){
-        try(Connection connection = DriverManager.getConnection(url, username, password)){
+        try{
+            Connection connection = DriverManager.getConnection(url, username, password);
             this.connection = connection;
             return this.connection;
         }catch(SQLException exception){

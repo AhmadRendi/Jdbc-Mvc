@@ -33,13 +33,13 @@ public class TestConnectionDatabase {
 
         // System.out.println(region.getId() + " | " + region.getName());
         ViewRegion viewRegion = new ViewRegion();
-        viewRegion.viewGetById("0.1");
+        // viewRegion.viewGetById("0.1");
     }
 
     public static void testSearchByName(){
         RegionDAO regionDAO = new RegionDAO();
-        Region region = regionDAO.searchByName("");
-        System.out.println(region.getId() + " | " + region.getName());
+        // Region region = regionDAO.searchByName("");
+        // System.out.println(region.getId() + " | " + region.getName());
     }
 
 

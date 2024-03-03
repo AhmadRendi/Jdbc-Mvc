@@ -96,7 +96,7 @@ public class RegionDAO {
         }
     }
 
-    public Region searchByName(String name){
+    public List<Region> searchByName(String name){
         String sql = "SELECT * FROM regions WHERE name LIKE ?"; // + "'%" + "?" + "%'";
 
         try(PreparedStatement preparedStatement = connect.getConnect().prepareStatement(sql)){
@@ -105,7 +105,10 @@ public class RegionDAO {
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if(resultSet.next()){
-                    return new Region(resultSet.getInt("id"), resultSet.getString("name"));
+                    List<Region> regions = new ArrayList<>();
+                    Region region = new Region(resultSet.getInt("id"), resultSet.getString("name"));
+                    regions.add(region);
+                    return regions;
                 }else {
                     throw new SearchNotFoundException("Region with name " + name + " not found!");
                 }
@@ -119,5 +122,26 @@ public class RegionDAO {
     }
 
 
+    public void updateRegion(String name, int id){
+        String sql = "UPDATE regions SET name = ? WHERE id = ?";
 
+        try(PreparedStatement statement = connect.getConnect().prepareStatement(sql)){
+            statement.setString(1, name);
+            statement.setInt(2, id);
+            statement.executeUpdate();
+        }catch (SQLException exception){
+            throw new RuntimeException(exception.getMessage());
+        }
+    }
+
+    public void deleteRegion(int id){
+        String sql = "DELETE FROM regions WHERE id = ?";
+
+        try(PreparedStatement statement = connect.getConnect().prepareStatement(sql)){
+            statement.setInt(1, id);
+            statement.executeQuery();
+        }catch (SQLException exception){
+            throw new RuntimeException(exception.getMessage());
+        }
+    }
 }

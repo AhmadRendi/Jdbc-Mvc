@@ -36,8 +36,14 @@ public class TestConnectionDatabase {
         viewRegion.viewGetById("0.1");
     }
 
+    public static void testSearchByName(){
+        RegionDAO regionDAO = new RegionDAO();
+        Region region = regionDAO.searchByName("");
+        System.out.println(region.getId() + " | " + region.getName());
+    }
+
 
     public static void main(String[] args) {
-        testGetById();
+        testSearchByName();
     }
 }

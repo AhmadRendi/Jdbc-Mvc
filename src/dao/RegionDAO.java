@@ -96,6 +96,28 @@ public class RegionDAO {
         }
     }
 
+    public Region searchByName(String name){
+        String sql = "SELECT * FROM regions WHERE name LIKE ?"; // + "'%" + "?" + "%'";
+
+        try(PreparedStatement preparedStatement = connect.getConnect().prepareStatement(sql)){
+
+            preparedStatement.setString(1,"%" + name + "%");
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if(resultSet.next()){
+                    return new Region(resultSet.getInt("id"), resultSet.getString("name"));
+                }else {
+                    throw new SearchNotFoundException("Region with name " + name + " not found!");
+                }
+            } catch (SQLException exception) {
+                throw new RuntimeException(exception.getMessage());
+            }
+
+        } catch(SQLException exception){
+            throw new RuntimeException(exception.getMessage());
+        }
+    }
+
 
 
 }

@@ -10,4 +10,13 @@ public class RegionController {
     public void getAll(){
         viewRegion.viewGetAll(regionDAO.getAll());
     }
+
+    public void createNewRegion(){
+        try {
+            regionDAO.createNewRegion(viewRegion.viewCreateNewRegion());
+        } catch (Exception e) {
+            // TODO: handle exception
+            System.out.println(e.getMessage());
+        }
+    }
 }

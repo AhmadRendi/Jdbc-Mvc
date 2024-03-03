@@ -63,7 +63,7 @@ public class RegionDAO {
         try(PreparedStatement preparedStatement = connect.getConnect().prepareStatement(sql)){
             if(isEmpty(region.getName()) && checkNameRegion(region.getName()) && isNull(region.getName())){
                 preparedStatement.setString(1, region.getName());
-                preparedStatement.executeUpdate();
+                // preparedStatement.executeUpdate();
             }
         }catch (SQLException |
                 InputMismatchException |

@@ -29,10 +29,13 @@ public class TestConnectionDatabase {
 
     public static void testGetById(){
         RegionDAO regionDAO = new RegionDAO();
-        Region region = regionDAO.getById(1);
+        // Region region = regionDAO.getById(1);
 
-        System.out.println(region.getId() + " | " + region.getName());
+        // System.out.println(region.getId() + " | " + region.getName());
+        ViewRegion viewRegion = new ViewRegion();
+        viewRegion.viewGetById("0.1");
     }
+
 
     public static void main(String[] args) {
         testGetById();

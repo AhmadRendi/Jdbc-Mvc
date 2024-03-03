@@ -27,7 +27,14 @@ public class TestConnectionDatabase {
         viewRegion.viewGetAll(regionDAO.getAll());
     }
 
+    public static void testGetById(){
+        RegionDAO regionDAO = new RegionDAO();
+        Region region = regionDAO.getById(1);
+
+        System.out.println(region.getId() + " | " + region.getName());
+    }
+
     public static void main(String[] args) {
-        testGetAll();
+        testGetById();
     }
 }

@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
+import javax.naming.NameNotFoundException;
+
+import exception.SearchNotFoundException;
 import model.Region;
 import tools.Connect;
 
@@ -69,6 +72,27 @@ public class RegionDAO {
                 InputMismatchException |
                 NullPointerException
                 exception){
+            throw new RuntimeException(exception.getMessage());
+        }
+    }
+
+    public Region getById(int id){
+        String sql = "SELECT * FROM regions WHERE id = ?";
+
+        try(PreparedStatement preparedStatement = connect.getConnect().prepareStatement(sql)){
+                preparedStatement.setInt(1, id);
+
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if(resultSet.next()){
+                        return new Region(resultSet.getInt("id"), resultSet.getString("name"));
+                    }else {
+                        throw new SearchNotFoundException("Region with id " + id + " not found!");
+                    }
+                } catch (SQLException exception) {
+                    throw new RuntimeException(exception.getMessage());
+                }
+
+        } catch(SQLException exception){
             throw new RuntimeException(exception.getMessage());
         }
     }

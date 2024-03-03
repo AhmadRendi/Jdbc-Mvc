@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
-import java.util.logging.Logger;
+// import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 
@@ -17,7 +17,7 @@ import tools.Connect;
 public class RegionDAO {
 
     private Connect connect = new Connect();
-    private Logger logger = Logger.getLogger(RegionDAO.class.getName());
+    // private Logger logger = Logger.getLogger(RegionDAO.class.getName());
     
     public List<Region> getAll(){
         String sql = "SELECT * FROM regions";
@@ -97,21 +97,22 @@ public class RegionDAO {
     }
 
     public List<Region> searchByName(String name){
-        String sql = "SELECT * FROM regions WHERE name LIKE ?"; // + "'%" + "?" + "%'";
+        String sql = "SELECT * FROM regions WHERE name LIKE ?";
 
         try(PreparedStatement preparedStatement = connect.getConnect().prepareStatement(sql)){
 
             preparedStatement.setString(1,"%" + name + "%");
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                if(resultSet.next()){
-                    List<Region> regions = new ArrayList<>();
+                List<Region> regions = new ArrayList<>();
+                while(resultSet.next()){
                     Region region = new Region(resultSet.getInt("id"), resultSet.getString("name"));
                     regions.add(region);
-                    return regions;
-                }else {
+                }
+                if(regions.isEmpty()){
                     throw new SearchNotFoundException("Region with name " + name + " not found!");
                 }
+                return regions;
             } catch (SQLException exception) {
                 throw new RuntimeException(exception.getMessage());
             }

@@ -1,6 +1,8 @@
 package test;
 
 
+import java.util.List;
+
 import dao.RegionDAO;
 import model.Region;
 import views.ViewRegion;
@@ -27,19 +29,13 @@ public class TestConnectionDatabase {
         viewRegion.viewGetAll(regionDAO.getAll());
     }
 
-    public static void testGetById(){
-        RegionDAO regionDAO = new RegionDAO();
-        // Region region = regionDAO.getById(1);
-
-        // System.out.println(region.getId() + " | " + region.getName());
-        ViewRegion viewRegion = new ViewRegion();
-        // viewRegion.viewGetById("0.1");
-    }
-
     public static void testSearchByName(){
         RegionDAO regionDAO = new RegionDAO();
-        // Region region = regionDAO.searchByName("");
-        // System.out.println(region.getId() + " | " + region.getName());
+        List<Region> region = regionDAO.searchByName("A");
+        for(Region region2 : region){
+            System.out.println(region2.getId() + " | " + region2.getName());
+        
+        }
     }
 
 

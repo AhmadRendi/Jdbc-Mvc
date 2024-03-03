@@ -38,7 +38,6 @@ public class TestConnectionDatabase {
         }
     }
 
-
     public static void main(String[] args) {
         testSearchByName();
     }

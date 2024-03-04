@@ -12,7 +12,7 @@ public class CountryController {
     private ViewCountry viewCountry = new ViewCountry();
 
 
-    public boolean checkListIsEmpty(List<Country> countries){
+    private boolean checkListIsEmpty(List<Country> countries){
         if(countries.isEmpty()){
             throw new NullPointerException("Country is empty");
         }
@@ -24,6 +24,29 @@ public class CountryController {
             checkListIsEmpty(countryDAO.getAll());
             viewCountry.viewGetAll(countryDAO.getAll());
         }catch(NullPointerException exception){
+            System.out.println(exception.getMessage());
+        }
+    }
+
+    private boolean checkInputIsEmpty(String input){
+        if(input.isEmpty()){
+            throw new NullPointerException("Input Can't Blank");
+        }
+
+        return true;
+    }
+
+    private String toUpperCase(String input){
+        return input.toUpperCase();
+    }
+
+    public void getById(String id){
+        try {
+            checkInputIsEmpty(id);
+            id = toUpperCase(id);
+            Country country = countryDAO.getById(id);
+            viewCountry.viewGetById(country);
+        } catch (NullPointerException exception) {
             System.out.println(exception.getMessage());
         }
     }

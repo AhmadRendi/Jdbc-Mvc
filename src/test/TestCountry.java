@@ -33,11 +33,15 @@ public class TestCountry {
 
 
     public static void main(String[] args) {
-        getById();
+        testGetByIdController("Ar");
     }
 
 
     public static void testGetAllController(){
         countryController.getAll();
+    }
+
+    public static void testGetByIdController(String id){
+        countryController.getById(id);
     }
 }

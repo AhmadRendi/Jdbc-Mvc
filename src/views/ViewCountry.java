@@ -16,4 +16,10 @@ public class ViewCountry {
         }
     }
 
+    public void viewGetById(Country country){
+        System.out.println("ID | Name \t\t\t|Region");
+        System.out.println("---------------------------------------------");
+        System.out.println(country.getId() + " | " + country.getName() + " \t\t\t| " + country.getRegions().getName());
+    }
+
 }

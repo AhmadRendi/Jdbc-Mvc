@@ -22,7 +22,6 @@ public class CountryController {
     public void getAll(){
         try{
             checkListIsEmpty(countryDAO.getAll());
-
             viewCountry.viewGetAll(countryDAO.getAll());
         }catch(NullPointerException exception){
             System.out.println(exception.getMessage());

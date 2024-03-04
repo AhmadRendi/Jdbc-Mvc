@@ -22,9 +22,18 @@ public class TestCountry {
 
 
 
+    public static void getById(){
+        Country country = countryDAO.getById("AR");
+
+
+        System.out.println(country.getName() + " | " +  country.getRegions().getName());
+    }
+
+
+
 
     public static void main(String[] args) {
-        testGetAllController();
+        getById();
     }
 
 

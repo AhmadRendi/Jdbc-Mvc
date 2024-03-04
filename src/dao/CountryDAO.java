@@ -32,5 +32,23 @@ public class CountryDAO {
     }
 
 
+    public Country getById(String id){
+        String sql = "SELECT countries.id, countries.name, regions.name, regions.id FROM countries JOIN regions ON countries.region = regions.id WHERE countries.id = ?";
+
+        try(PreparedStatement statement = connect.getConnect().prepareStatement(sql)){
+            statement.setString(1, id);
+            Country country = new Country();
+            try(ResultSet resultSet = statement.executeQuery()){
+                while(resultSet.next()){
+                    country = new Country(resultSet.getString("id"), resultSet.getString("name"), new Region(resultSet.getInt("regions.id"), resultSet.getString("regions.name")));
+                }
+            }
+            return country;
+        }catch (SQLException exception){
+            throw new IllegalStateException(exception.getMessage());
+        }
+    }
+
+
 
 }

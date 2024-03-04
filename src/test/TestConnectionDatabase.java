@@ -5,9 +5,15 @@ import java.util.List;
 
 import dao.RegionDAO;
 import model.Region;
+import tools.Connect;
 import views.ViewRegion;
 
 public class TestConnectionDatabase {
+
+    public static void testConnection(){
+        Connect connect = new Connect();
+        System.out.println(connect.getConnect());
+    }
 
     public static void testCreatenewRegion(){
         RegionDAO regionDAO = new RegionDAO();
@@ -40,6 +46,6 @@ public class TestConnectionDatabase {
 
 
     public static void main(String[] args) {
-        testSearchByName();
+        testConnection();
     }
 }

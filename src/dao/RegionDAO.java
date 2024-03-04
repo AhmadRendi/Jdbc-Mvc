@@ -80,6 +80,7 @@ public class RegionDAO {
 
         try(PreparedStatement preparedStatement = connect.getConnect().prepareStatement(sql)){
                 preparedStatement.setInt(1, id);
+                
 
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     if(resultSet.next()){

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import dto.CountryDTO;
 import model.Country;
 import model.Region;
 import tools.Connect;
@@ -71,6 +72,19 @@ public class CountryDAO {
                 // TODO: handle exception
                 throw new IllegalStateException(exception.getMessage());
             }
+    }
+
+    public void createNewCountry(CountryDTO countryDTO){
+        String sql = "INSERT INTO countries(id, name, region) VALUES (?,?,?)";
+        try(PreparedStatement statement = connect.getConnect().prepareStatement(sql)){
+            statement.setString(1, countryDTO.getId());
+            statement.setString(2, countryDTO.getName());
+            statement.setInt(3, countryDTO.getIdRegion());
+
+            statement.executeQuery();
+        }catch (SQLException exception){
+            throw new IllegalStateException(exception.getMessage());
+        }
     }
 
 }

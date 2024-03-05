@@ -41,7 +41,16 @@ public class TestCountry {
     }
 
     public static void main(String[] args) {
-        testSearchByName("sql");
+        // testSearchByName("sql");
+
+        Object input = "Ahmad Rendi";
+
+        if(input instanceof Integer){
+            System.out.println("ini adalah Integer");
+        }else if (input instanceof String){
+            System.out.println("ini adalah String");
+        }
+
     }
 
 

@@ -49,6 +49,28 @@ public class CountryDAO {
         }
     }
 
+    public List<Country> searchByName(String name){
+        String sql = "SELECT countries.name, countries.id, regions.name, regions.id FROM countries " +
+            "JOIN regions ON countries.region = regions.id " +
+            "WHERE countries.name LIKE ?";
 
+            try (PreparedStatement statement = connect.getConnect().prepareStatement(sql)) {
+                statement.setString(1, "%" + name + "%");
+
+                List<Country> list = new ArrayList<>();
+
+                try (ResultSet resultSet = statement.executeQuery()){
+                    while(resultSet.next()){
+                        Country country = new Country(resultSet.getString("id"), resultSet.getString("name"), new Region(resultSet.getInt("regions.id"), resultSet.getString("regions.name")));
+                        list.add(country);
+                    }
+                }
+
+                return list;
+            } catch (SQLException exception) {
+                // TODO: handle exception
+                throw new IllegalStateException(exception.getMessage());
+            }
+    }
 
 }

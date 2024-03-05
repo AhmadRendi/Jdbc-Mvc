@@ -29,11 +29,19 @@ public class TestCountry {
         System.out.println(country.getName() + " | " +  country.getRegions().getName());
     }
 
-
-
+    public static void searchByName(String name){
+        System.out.println("\f");
+        System.out.println("List of Countries");
+        System.out.println("ID | Name \t\t\t|Region");
+        for(Country country : countryDAO.searchByName(name)){
+            System.out.println("---------------------------------------------");
+            System.out.println(country.getId() + " | " + country.getName() + " \t\t\t|" + country.getRegions().getName());
+            // System.out.println(country.getRegions().getName());
+        }
+    }
 
     public static void main(String[] args) {
-        testGetByIdController("Ar");
+        searchByName("d");
     }
 
 

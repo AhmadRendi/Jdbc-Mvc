@@ -1,7 +1,6 @@
 package controller;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 import dao.CountryDAO;
 import dao.RegionDAO;
@@ -16,9 +15,6 @@ public class CountryController {
     private CountryDAO countryDAO = new CountryDAO();
     private ViewCountry viewCountry = new ViewCountry();
     private RegionDAO regionDAO = new RegionDAO();
-
-    private Logger logger = Logger.getLogger(CountryController.class.getName());
-
 
     private boolean checkListIsEmpty(List<Country> countries){
         if(countries.isEmpty()){
@@ -109,7 +105,7 @@ public class CountryController {
             checkInputIsEmpty(countryDTO.getId());
             checkIdRegion(countryDTO.getIdRegion());
             checkIdCountryIsAlReady(countryDTO.getId());
-            
+
             countryDAO.createNewCountry(countryDTO);
 
         }catch (NullPointerException |

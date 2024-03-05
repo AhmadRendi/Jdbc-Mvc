@@ -87,4 +87,19 @@ public class CountryDAO {
         }
     }
 
+
+    public void updateCoutry(CountryDTO countryDTO){
+        String sql = "UPDATE countries SET name = ? SET region = ? WHERE id = ?";
+
+        try(PreparedStatement statement = connect.getConnect().prepareStatement(sql)){
+
+            statement.setString(1, countryDTO.getName());
+            statement.setInt(2, countryDTO.getIdRegion());
+            statement.setString(3, countryDTO.getId());
+
+        }catch (SQLException exception){
+            throw new IllegalStateException(exception.getMessage());
+        }
+    }
+
 }

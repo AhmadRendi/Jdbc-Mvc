@@ -35,8 +35,27 @@ public class ViewCountry {
     }
 
     public CountryDTO viewCreateNewCountry(){
-        CountryDTO countryDTO = new CountryDTO(null, null, null);
+        CountryDTO countryDTO = new CountryDTO();
         System.out.println("Masukan Data Country");
+        System.out.println("\f");
+        System.out.print("Masukan Id Country : ");
+        String id = scanner.nextLine();
+        countryDTO.setId(id);
+        System.out.println("---------------------------------------------");
+        System.out.print("Masukan Nama Country : ");
+        String name = scanner.nextLine();
+        countryDTO.setName(name);
+        System.out.println("---------------------------------------------");
+        System.out.print("Masukan ID Region : ");
+        Integer idRegion = scanner.nextInt();
+        countryDTO.setIdRegion(idRegion);
+
+        return countryDTO;
+    }
+
+
+    public CountryDTO viewUpdateCountry(){
+        CountryDTO countryDTO = new CountryDTO();
         System.out.println("\f");
         System.out.print("Masukan Id Country : ");
         String id = scanner.nextLine();

@@ -22,4 +22,12 @@ public class ViewCountry {
         System.out.println(country.getId() + " | " + country.getName() + " \t\t\t| " + country.getRegions().getName());
     }
 
+    public void viewSearchByName(List<Country> countries){
+        System.out.println("ID | Name \t\t\t|Region");
+        for (Country country : countries){
+            System.out.println("---------------------------------------------");
+            System.out.println(country.getId() + " | " + country.getName() + " \t\t\t| " + country.getRegions().getName());
+        }
+    }
+
 }

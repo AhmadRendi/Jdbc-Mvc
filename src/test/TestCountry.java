@@ -41,7 +41,7 @@ public class TestCountry {
     }
 
     public static void main(String[] args) {
-        searchByName("d");
+        testSearchByName("sql");
     }
 
 
@@ -51,5 +51,9 @@ public class TestCountry {
 
     public static void testGetByIdController(String id){
         countryController.getById(id);
+    }
+
+    public static void testSearchByName(String name){
+        countryController.searchByName(name);
     }
 }

@@ -3,6 +3,7 @@ package controller;
 import java.util.List;
 
 import dao.CountryDAO;
+import exception.SearchNotFoundException;
 import model.Country;
 import views.ViewCountry;
 
@@ -47,6 +48,28 @@ public class CountryController {
             Country country = countryDAO.getById(id);
             viewCountry.viewGetById(country);
         } catch (NullPointerException exception) {
+            System.out.println(exception.getMessage());
+        }
+    }
+
+    private void checkSearch(String name){
+        if(countryDAO.searchByName(name).isEmpty()){
+            throw new SearchNotFoundException("Country by Name " + name + " Not Found");
+        }
+    } 
+
+
+    public void searchByName(String name){
+        try{
+            checkInputIsEmpty(name);
+            checkSearch(name);
+
+            viewCountry.viewSearchByName(countryDAO.searchByName(name));
+
+        }catch (NullPointerException |
+                SearchNotFoundException
+                exception
+        ){
             System.out.println(exception.getMessage());
         }
     }

@@ -81,7 +81,7 @@ public class CountryDAO {
             statement.setString(2, countryDTO.getName());
             statement.setInt(3, countryDTO.getIdRegion());
 
-            statement.executeQuery();
+            statement.executeUpdate();
         }catch (SQLException exception){
             throw new IllegalStateException(exception.getMessage());
         }

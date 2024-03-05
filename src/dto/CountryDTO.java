@@ -5,6 +5,10 @@ public class CountryDTO {
     private String name;
     private Integer idRegion;
 
+    public CountryDTO(){
+        
+    }
+
 
     public CountryDTO(String id, String name, Integer idRegions){
         this.id = id;

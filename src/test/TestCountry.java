@@ -36,20 +36,27 @@ public class TestCountry {
         for(Country country : countryDAO.searchByName(name)){
             System.out.println("---------------------------------------------");
             System.out.println(country.getId() + " | " + country.getName() + " \t\t\t|" + country.getRegions().getName());
-            // System.out.println(country.getRegions().getName());
         }
     }
+
+
+    public static void createNewCountry(){
+        countryController.createNewCountry();
+    }
+
 
     public static void main(String[] args) {
         // testSearchByName("sql");
 
-        Object input = "Ahmad Rendi";
+        createNewCountry();
 
-        if(input instanceof Integer){
-            System.out.println("ini adalah Integer");
-        }else if (input instanceof String){
-            System.out.println("ini adalah String");
-        }
+        // Object input = "Ahmad Rendi";
+
+        // if(input instanceof Integer){
+        //     System.out.println("ini adalah Integer");
+        // }else if (input instanceof String){
+        //     System.out.println("ini adalah String");
+        // }
 
     }
 

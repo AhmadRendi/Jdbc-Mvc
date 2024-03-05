@@ -1,8 +1,12 @@
 package controller;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import dao.CountryDAO;
+import dao.RegionDAO;
+import dto.CountryDTO;
+import exception.ItemIsAlreadyException;
 import exception.SearchNotFoundException;
 import model.Country;
 import views.ViewCountry;
@@ -11,6 +15,9 @@ public class CountryController {
     
     private CountryDAO countryDAO = new CountryDAO();
     private ViewCountry viewCountry = new ViewCountry();
+    private RegionDAO regionDAO = new RegionDAO();
+
+    private Logger logger = Logger.getLogger(CountryController.class.getName());
 
 
     private boolean checkListIsEmpty(List<Country> countries){
@@ -70,6 +77,45 @@ public class CountryController {
                 SearchNotFoundException
                 exception
         ){
+            System.out.println(exception.getMessage());
+        }
+    }
+
+    private boolean checkIdRegion(Integer idRegion){
+        try{
+            regionDAO.getById(idRegion);
+            return true;
+        }catch (SearchNotFoundException exception){
+            throw new SearchNotFoundException(exception.getMessage());
+        }
+    }
+
+    private boolean checkIdCountryIsAlReady(String idCountry){
+        Country country = countryDAO.getById(idCountry);
+        if(country.getId() != null){
+            throw new ItemIsAlreadyException("Country with id " + idCountry + " is already");
+        }
+
+        return true;
+
+    }
+
+    public void createNewCountry(){
+        try{
+
+            CountryDTO countryDTO = viewCountry.viewCreateNewCountry();
+            countryDTO.getId().toUpperCase();
+            checkInputIsEmpty(countryDTO.getName());
+            checkInputIsEmpty(countryDTO.getId());
+            checkIdRegion(countryDTO.getIdRegion());
+            checkIdCountryIsAlReady(countryDTO.getId());
+            
+            countryDAO.createNewCountry(countryDTO);
+
+        }catch (NullPointerException |
+                SearchNotFoundException |
+                ItemIsAlreadyException
+                exception){
             System.out.println(exception.getMessage());
         }
     }

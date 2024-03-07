@@ -48,11 +48,23 @@ public class CountryController {
         try {
             checkInputIsEmpty(id);
             id = toUpperCase(id);
+            checkCountryByIdIsNotReady(id);
             Country country = countryDAO.getById(id);
             viewCountry.viewGetById(country);
-        } catch (NullPointerException exception) {
+        } catch (NullPointerException |
+                SearchNotFoundException
+                exception) {
             System.out.println(exception.getMessage());
         }
+    }
+
+    private boolean checkCountryByIdIsNotReady(String id){
+
+        Country country = countryDAO.getById(id);
+        if(country.getId() != null){
+            return true;
+        }
+        throw new SearchNotFoundException("country with id " + id + " not found");
     }
 
     private void checkSearch(String name){
@@ -111,6 +123,24 @@ public class CountryController {
         }catch (NullPointerException |
                 SearchNotFoundException |
                 ItemIsAlreadyException
+                exception){
+            System.out.println(exception.getMessage());
+        }
+    }
+
+
+    public void updateCoutry(){
+        try{
+            CountryDTO countryDTO = viewCountry.viewUpdateCountry();
+
+            getById(countryDTO.getId());
+            checkInputIsEmpty(countryDTO.getName());
+            checkIdRegion(countryDTO.getIdRegion());
+
+            countryDAO.updateCoutry(countryDTO);
+        }catch (NullPointerException |
+                SearchNotFoundException |
+                IllegalStateException
                 exception){
             System.out.println(exception.getMessage());
         }

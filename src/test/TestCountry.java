@@ -48,7 +48,9 @@ public class TestCountry {
     public static void main(String[] args) {
         // testSearchByName("sql");
 
-        createNewCountry();
+        // createNewCountry();
+
+        testUpdateCountry();
 
         // Object input = "Ahmad Rendi";
 
@@ -58,6 +60,10 @@ public class TestCountry {
         //     System.out.println("ini adalah String");
         // }
 
+    }
+
+    public static void testUpdateCountry(){
+        countryController.updateCoutry();
     }
 
 

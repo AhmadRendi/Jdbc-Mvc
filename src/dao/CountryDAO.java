@@ -112,7 +112,7 @@ public class CountryDAO {
         String sql = "DELETE FROM countries WHERE id = ?";
         try(PreparedStatement statement = connect.getConnect().prepareStatement(sql)){
             statement.setString(1, id);
-            statement.executeQuery();
+            statement.executeUpdate();
         }catch (SQLException exception){
             throw new IllegalStateException(exception.getMessage());
         }

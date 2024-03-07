@@ -44,22 +44,13 @@ public class TestCountry {
         countryController.createNewCountry();
     }
 
-
     public static void main(String[] args) {
-        // testSearchByName("sql");
+        countryController.viewAllCountry();
+    }
 
-        // createNewCountry();
 
-        testUpdateCountry();
-
-        // Object input = "Ahmad Rendi";
-
-        // if(input instanceof Integer){
-        //     System.out.println("ini adalah Integer");
-        // }else if (input instanceof String){
-        //     System.out.println("ini adalah String");
-        // }
-
+    public static void testDeleteById(){
+        countryController.deleteCountryById();
     }
 
     public static void testUpdateCountry(){

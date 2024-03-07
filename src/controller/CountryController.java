@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.List;
+import java.util.Scanner;
 
 import dao.CountryDAO;
 import dao.RegionDAO;
@@ -15,6 +16,7 @@ public class CountryController {
     private CountryDAO countryDAO = new CountryDAO();
     private ViewCountry viewCountry = new ViewCountry();
     private RegionDAO regionDAO = new RegionDAO();
+    private Scanner scanner = new Scanner(System.in);
 
     private boolean checkListIsEmpty(List<Country> countries){
         if(countries.isEmpty()){
@@ -144,5 +146,94 @@ public class CountryController {
                 exception){
             System.out.println(exception.getMessage());
         }
+    }
+
+
+    public void deleteCountryById(){
+        String id = viewCountry.viewDeleteCountry();
+
+        try{
+            checkInputIsEmpty(id);
+            checkCountryByIdIsNotReady(id);
+
+            countryDAO.deleteCountry(id);
+        }catch (NullPointerException |
+                SearchNotFoundException
+                exception){
+            System.out.println(exception.getMessage());
+        }
+    }
+
+
+    public void menu(){
+        System.out.println("Menu Country");
+        System.out.println("1. Lihat Semua Country");
+        System.out.println("2. Tambah Country");
+        System.out.println("3. Lihat Country Berdasarkan ID");
+        System.out.println("4. Cari Country Berdasarkan Nama");
+        System.out.println("5. Update Country");
+        System.out.println("6. Hapus Country");
+        System.out.println("7. Keluar");
+    }
+
+    private boolean checkInputIsNumber(String input){
+        try{
+            Integer.parseInt(input);
+            return true;
+        }catch (NumberFormatException exception){
+            throw new NumberFormatException("Input Must Be Number!");
+        }
+    }
+
+
+
+    public void viewAllCountry(){        
+        
+        int pilihan = 0;
+        String pilih;
+        while (pilihan != 7){
+            System.out.println('\f');
+            menu();
+            System.out.print("Pilihan : ");
+            pilih = scanner.nextLine();
+            System.out.print("\033[H\033[2J");  
+            
+            try{
+                checkInputIsNumber(pilih);
+                pilihan = Integer.parseInt(pilih);
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
+            switch (pilihan){
+                case 1:
+                    getAll();
+                    break;
+                case 2:
+                    createNewCountry();
+                    break;
+                case 3:
+                    System.out.print("Masukan ID Region : ");
+                    String id = scanner.nextLine();
+                    getById(id);
+                    break;
+                case 4:
+                    System.out.print("Masukan Nama Region : ");
+                    String name = scanner.nextLine();
+                    searchByName(name);
+                    break;
+                case 5:
+                    updateCoutry();
+                    break;
+                case 6:
+                    deleteCountryById();
+                    break;
+                case 7:
+                    System.out.println("Terima Kasih!");
+                    break;
+                default:
+                    System.out.println("Pilihan Tidak Tersedia!");
+            }
+        }
+
     }
 }

@@ -72,4 +72,13 @@ public class ViewCountry {
         return countryDTO;
     }
 
+
+    public String viewDeleteCountry(){
+        System.out.println("---------------------------------------------");
+        System.out.print("Masukan id Country yang akan dihapus : ");
+        String id = scanner.nextLine();
+
+        return id;
+    }
+
 }

@@ -6,6 +6,11 @@ public class Departement {
     private String name;
     private Integer manager;
 
+
+    public Departement(){
+        
+    }
+
     public Departement(Integer id, String name, Integer manager){
         this.id = id;
         this.name = name;

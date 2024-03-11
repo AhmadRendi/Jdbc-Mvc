@@ -1,35 +1,37 @@
-package model;
+package dto;
 
-import java.time.LocalDate;
-import java.util.List;
+import java.sql.Date;
 
-public class Employee {
+import model.Departement;
+import model.Job;
+
+public class EmployeeDTO {
+    
     private Integer id;
     private String firstName;
     private String lastName;
     private String email;
     private String phoneNumber;
-    private LocalDate hireDate;
+    private Date hireDate;
     private Integer salary;
-    private List<Integer> manager;
+    private Integer manager;
     private Job job;
     private Departement departement;
     private Double commission;
 
 
-    public Employee(){
+
+    public EmployeeDTO(){
 
     }
 
-    public Employee(Integer id, String firstName, String lastName,
-                    String email, String phoneNumber, LocalDate hireDate,
-                    Integer salary, List<Integer> manager, Job job, Departement departement,
-                    Double commission){
-        
+    public EmployeeDTO(Integer id, String firstName, String lastName,
+                        String email, String phoneNumber, Date hireDate,
+                        Integer salary, Integer manager, Job job, Departement departement,
+                        Double commission){
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
         this.phoneNumber = phoneNumber;
         this.hireDate = hireDate;
         this.salary = salary;
@@ -37,7 +39,8 @@ public class Employee {
         this.job = job;
         this.departement = departement;
         this.commission = commission;
-        }
+    }    
+
 
     public void setId(Integer id){
         this.id = id;
@@ -71,6 +74,7 @@ public class Employee {
         return this.email;
     }
 
+
     public void setPhoneNumber(String phoneNumber){
         this.phoneNumber = phoneNumber;
     }
@@ -79,11 +83,11 @@ public class Employee {
         return this.phoneNumber;
     }
 
-    public void setHireDate(LocalDate hireDate){
+    public void setHireDate(Date hireDate){
         this.hireDate = hireDate;
     }
 
-    public LocalDate getHireDate(){
+    public Date getHireDate(){
         return this.hireDate;
     }
 
@@ -95,16 +99,16 @@ public class Employee {
         return this.salary;
     }
 
-    public void manager(List<Integer> manager){
+    public void setManager(Integer manager){
         this.manager = manager;
     }
 
-    public List<Integer> manager(){
+    public Integer getManager(){
         return this.manager;
     }
 
     public void setJob(Job job){
-        this.job = job;
+        this.job  = job;
     }
 
     public Job getJob(){
@@ -126,4 +130,5 @@ public class Employee {
     public Double getCommission(){
         return this.commission;
     }
+
 }

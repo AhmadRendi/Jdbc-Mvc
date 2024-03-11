@@ -6,6 +6,10 @@ public class Job {
     private Integer minSalary;
     private Integer maxSalary;
 
+    public Job(){
+        
+    }
+
 
     public Job(String id, String title, Integer minSalary, Integer maxSalary){
         this.id = id;

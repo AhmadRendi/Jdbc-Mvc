@@ -3,8 +3,6 @@ package test;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-import com.mysql.cj.conf.EnumProperty;
-
 import controller.EmployeeController;
 
 import java.sql.Date;
@@ -85,12 +83,17 @@ public class TestEmployee {
         // testInsert();
         // testInsertPartTwo();
         // insert();
-        searchById();
+        // searchById();
+        testSearchById();
     }   
 
 
     public static void insert(){
         controller.createNewEmployee();
+    }
+
+    public static void testSearchById(){
+        controller.searchById();
     }
 
 }

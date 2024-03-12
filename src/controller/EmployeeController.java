@@ -8,6 +8,7 @@ import dao.JobDAO;
 import dto.EmployeeDTO;
 import exception.SearchNotFoundException;
 import model.Departement;
+import model.Employee;
 import model.Job;
 import views.ViewEmployee;
 
@@ -61,6 +62,39 @@ public class EmployeeController {
         }catch(SearchNotFoundException exception){
             System.out.println(exception.getMessage());
         }
+    }
+
+    private boolean checkInputIsNumber(String input){
+        try{
+            Integer.parseInt(input);
+            return true;
+        }catch (NumberFormatException exception){
+            throw new NumberFormatException("Input Must Be Number!");
+        }
+    }
+
+    public void checkEmployeeById(Integer id){
+        Employee employee = dao.searchEmployeeById(id);
+        if(employee.getId() == null){
+            throw new SearchNotFoundException("employee with ID " + id + " not found");
+        } 
+    }
+
+
+    public void searchById(){
+        System.out.println("---------------------------------------------");
+        System.out.print("Masukan ID Employee : ");
+        String id = scanner.nextLine();
+        try{
+            checkInputIsNumber(id);
+            checkEmployeeById(new Integer(id));
+            System.out.println("---------------------------------------------");
+            viewEmployee.searchById(dao.searchEmployeeById(new Integer(id)));
+        }catch (NumberFormatException |
+                SearchNotFoundException exception){
+           System.out.println(exception.getMessage());
+        }
+        
     }
 
 

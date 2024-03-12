@@ -75,7 +75,6 @@ public class EmployeeDAO {
         }catch(SQLException exception){
             throw new IllegalStateException(exception.getMessage());
         }
-        // return null;
     }
 
 }

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 import dto.EmployeeDTO;
+import model.Employee;
 
 public class ViewEmployee {
 
@@ -43,6 +44,16 @@ public class ViewEmployee {
         employeeDTO.setCommission(Double.valueOf(komisi.toString()));
         return employeeDTO;
 
+    }
+
+
+    public void searchById(Employee employee){
+        System.out.println("id |      name     |      email       |      telepon      |          salary       |           job         |           departmen");
+        System.out.println(employee.getId() + " | " +
+        employee.getFirstName() + " " + employee.getLastName() +
+        " \t| " + employee.getEmail() + " \t| " + employee.getPhoneNumber() + 
+        " \t| " + employee.getSalary() + " \t\t| " + employee.getJob().getTitle() +
+        " \t\t| " + employee.getDepartement().getName());
     }
 
 

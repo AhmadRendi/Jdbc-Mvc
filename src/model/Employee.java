@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -9,9 +10,11 @@ public class Employee {
     private String lastName;
     private String email;
     private String phoneNumber;
-    private LocalDate hireDate;
+    private Date hireDate;
     private Integer salary;
-    private List<Integer> manager;
+    private List<Employee> employeeManager;
+    private Integer manager;
+    // private Employee manager;
     private Job job;
     private Departement departement;
     private Double commission;
@@ -22,8 +25,8 @@ public class Employee {
     }
 
     public Employee(Integer id, String firstName, String lastName,
-                    String email, String phoneNumber, LocalDate hireDate,
-                    Integer salary, List<Integer> manager, Job job, Departement departement,
+                    String email, String phoneNumber, Date hireDate,
+                    Integer salary, Integer manager, Job job, Departement departement,
                     Double commission){
         
         this.id = id;
@@ -79,11 +82,11 @@ public class Employee {
         return this.phoneNumber;
     }
 
-    public void setHireDate(LocalDate hireDate){
+    public void setHireDate(Date hireDate){
         this.hireDate = hireDate;
     }
 
-    public LocalDate getHireDate(){
+    public Date getHireDate(){
         return this.hireDate;
     }
 
@@ -95,13 +98,31 @@ public class Employee {
         return this.salary;
     }
 
-    public void manager(List<Integer> manager){
+
+
+    public void setManager(Integer manager){
         this.manager = manager;
     }
 
-    public List<Integer> manager(){
+    public Integer getManager(){
         return this.manager;
     }
+
+    // public void setManager(List<Integer> manager){
+    //     this.manager = manager;
+    // }
+
+    // public List<Integer> getManager(){
+    //     return this.manager;
+    // }
+
+    // public void manager(List<Integer> manager){
+    //     this.manager = manager;
+    // }
+
+    // public String manager(){
+    //     return this.manager;
+    // }
 
     public void setJob(Job job){
         this.job = job;

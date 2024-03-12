@@ -2,8 +2,6 @@ package controller;
 
 import java.util.Scanner;
 
-import javax.sound.midi.SysexMessage;
-
 import dao.DepartmentDAO;
 import dao.EmployeeDAO;
 import dao.JobDAO;

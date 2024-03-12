@@ -14,6 +14,7 @@ import dao.EmployeeDAO;
 import dao.JobDAO;
 import dto.EmployeeDTO;
 import model.Departement;
+import model.Employee;
 import model.Job;
 import views.ViewEmployee;
 
@@ -69,10 +70,22 @@ public class TestEmployee {
         System.out.println(mDto.getCommission());
     }
 
+
+    public static void searchById(){
+        Employee employee = employeeDAO.searchEmployeeById(100);
+
+        System.out.println("Berhasil");
+        System.out.println(employee.getFirstName());
+        System.out.println(employee.getJob().getId());
+        System.out.println(employee.getJob().getTitle());
+        System.out.println(employee.getDepartement().getName());
+    }
+
     public static void main(String[] args) {
         // testInsert();
         // testInsertPartTwo();
-        insert();
+        // insert();
+        searchById();
     }   
 
 

@@ -97,4 +97,27 @@ public class EmployeeController {
         }
         
     }
+
+
+    private boolean checkEmployeeByNameIsFound(String name){
+        List<Employee> list = null;
+        list = dao.searchEmployeesByName(name);
+        if (list == null) {
+            throw new SearchNotFoundException("employee with name " + name + " not found");
+        }
+
+        return true;
+    }
+
+    public void searchByName(){
+        System.out.println("---------------------------------------------");
+        System.out.print("Masukkan Name Employee : ");
+        String name = scanner.nextLine();
+        try{
+            checkEmployeeByNameIsFound(name);
+            viewEmployee.viewSearchByName(dao.searchEmployeesByName(name));
+        }catch (SearchNotFoundException exception){
+            System.out.println(exception.getMessage());
+        }
+    }
 }

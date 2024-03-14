@@ -97,7 +97,8 @@ public class TestEmployee {
         // insert();
         // searchById();
         // testSearchById();
-        searchByName("S");
+        // searchByName("S");
+        testSearchByName();
     }   
 
 
@@ -107,6 +108,10 @@ public class TestEmployee {
 
     public static void testSearchById(){
         controller.searchById();
+    }
+
+    public static void testSearchByName(){
+        controller.searchByName();
     }
 
 }

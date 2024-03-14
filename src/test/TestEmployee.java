@@ -107,7 +107,8 @@ public class TestEmployee {
         // testSearchById();
         // searchByName("S");
         // testSearchByName();
-        getAll();
+        // getAll();
+        testGetAll();
     }   
 
 
@@ -121,6 +122,10 @@ public class TestEmployee {
 
     public static void testSearchByName(){
         controller.searchByName();
+    }
+
+    public static void testGetAll(){
+        controller.getAll();
     }
 
 }

@@ -70,5 +70,17 @@ public class ViewEmployee {
         }
     }
 
+    public void viewGetAll(List<Employee> list){
+        System.out.println("id |      name     |      email       |      telepon      |          salary       |           job         |           departmen");
+        for(Employee employee : list){
+            System.out.println(employee.getId() + " | " +
+            employee.getFirstName() + " " + employee.getLastName() +
+            " \t| " + employee.getEmail() + " \t| " + employee.getPhoneNumber() + 
+            " \t| " + employee.getSalary() + " \t\t| " + employee.getJob().getTitle() +
+            " \t\t| " + employee.getDepartement().getName());
+            System.out.println("---------------------------------------------");
+        }
+    }
+
 
 }

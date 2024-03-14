@@ -121,5 +121,7 @@ public class EmployeeController {
         }
     }
 
-    
+    public void getAll(){
+        viewEmployee.viewGetAll(dao.getAll());
+    }
 }

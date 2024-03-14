@@ -113,7 +113,9 @@ public class TestEmployee {
         // testSearchByName();
         // getAll();
         // testGetAll();
-        deleteById(207);
+        // deleteById(207);
+        testDeleteById();
+
     }   
 
 
@@ -131,6 +133,10 @@ public class TestEmployee {
 
     public static void testGetAll(){
         controller.getAll();
+    }
+
+    public static void testDeleteById(){
+        controller.deleteById();
     }
 
 }

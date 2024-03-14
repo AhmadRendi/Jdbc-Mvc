@@ -82,5 +82,11 @@ public class ViewEmployee {
         }
     }
 
+    public String deleteById(){
+        System.out.println("---------------------------------------------");
+        System.out.print("Masukan ID employee : ");
+        String id = scanner.nextLine();
+        return id;
+    }
 
 }

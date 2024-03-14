@@ -124,4 +124,17 @@ public class EmployeeController {
     public void getAll(){
         viewEmployee.viewGetAll(dao.getAll());
     }
+
+    public void deleteById(){
+        try{
+            String input = viewEmployee.deleteById();
+            checkInputIsNumber(input);
+            checkEmployeeById(Integer.valueOf(input));
+            dao.deleteById(Integer.valueOf(input));
+        }catch(NumberFormatException |
+                SearchNotFoundException
+                exception){
+            System.out.println(exception.getMessage());
+        }
+    }
 }

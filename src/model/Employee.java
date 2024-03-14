@@ -1,8 +1,6 @@
 package model;
 
 import java.sql.Date;
-import java.time.LocalDate;
-import java.util.List;
 
 public class Employee {
     private Integer id;
@@ -12,9 +10,7 @@ public class Employee {
     private String phoneNumber;
     private Date hireDate;
     private Integer salary;
-    private List<Employee> employeeManager;
     private Integer manager;
-    // private Employee manager;
     private Job job;
     private Departement departement;
     private Double commission;
@@ -148,7 +144,7 @@ public class Employee {
         return this.commission;
     }
 
-    // @Override
+    @Override
     public String toString() {
         // TODO Auto-generated method stub
         System.out.println("masuk");

@@ -152,4 +152,15 @@ public class EmployeeDAO {
         }
     }
 
+    public void deleteById(Integer id){
+        String sql = "DELETE FROM employee WHERE id = ?";
+
+        try(PreparedStatement statement = connect.getConnect().prepareStatement(sql)){
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        }catch (SQLException exception){
+            throw new IllegalStateException(exception.getMessage());
+        }
+    }
+
 }

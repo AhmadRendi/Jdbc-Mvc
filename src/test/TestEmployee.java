@@ -99,6 +99,10 @@ public class TestEmployee {
         }
     }
 
+    public static void deleteById(Integer id){
+        employeeDAO.deleteById(id);
+    }
+
     public static void main(String[] args) {
         // testInsert();
         // testInsertPartTwo();
@@ -108,7 +112,8 @@ public class TestEmployee {
         // searchByName("S");
         // testSearchByName();
         // getAll();
-        testGetAll();
+        // testGetAll();
+        deleteById(207);
     }   
 
 

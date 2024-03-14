@@ -1,6 +1,7 @@
 package test;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 import controller.EmployeeController;
@@ -79,12 +80,24 @@ public class TestEmployee {
         System.out.println(employee.getDepartement().getName());
     }
 
+    public static void searchByName(String name){
+        List<Employee> list = employeeDAO.searchEmployeesByName(name);
+
+        for(Employee employee : list){
+            // System.out.println(employee.get());
+            // System.out.println(employee.toString());
+            // employee.toString();
+            System.out.println(employee.getEmail());
+        }
+    }
+
     public static void main(String[] args) {
         // testInsert();
         // testInsertPartTwo();
         // insert();
         // searchById();
-        testSearchById();
+        // testSearchById();
+        searchByName("S");
     }   
 
 

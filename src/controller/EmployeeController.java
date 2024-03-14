@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.List;
 import java.util.Scanner;
 
 import dao.DepartmentDAO;
@@ -96,6 +97,4 @@ public class EmployeeController {
         }
         
     }
-
-
 }

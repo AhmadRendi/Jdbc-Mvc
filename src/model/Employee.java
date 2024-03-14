@@ -147,4 +147,11 @@ public class Employee {
     public Double getCommission(){
         return this.commission;
     }
+
+    // @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        System.out.println("masuk");
+        return super.toString();
+    }
 }

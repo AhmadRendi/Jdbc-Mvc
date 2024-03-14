@@ -137,4 +137,58 @@ public class EmployeeController {
             System.out.println(exception.getMessage());
         }
     }
+
+    private void menu(){
+        System.out.println("Menu Employee");
+        System.out.println("1. Lihat Semua Employee");
+        System.out.println("2. Tambah Employee");
+        System.out.println("3. Lihat Employee Berdasarkan ID");
+        System.out.println("4. Cari Employee Berdasarkan Nama");
+        System.out.println("5. Hapus Employee");
+        System.out.println("6. Keluar");
+    }
+
+
+    public void viewAllEmployee(){        
+        
+        int pilihan = 0;
+        String pilih;
+        while (pilihan != 6){
+            System.out.println('\f');
+            menu();
+            System.out.print("Pilihan : ");
+            pilih = scanner.nextLine();
+            System.out.print("\033[H\033[2J");  
+            
+            try{
+                checkInputIsNumber(pilih);
+                pilihan = Integer.parseInt(pilih);
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
+            switch (pilihan){
+                case 1:
+                    getAll();
+                    break;
+                case 2:
+                    createNewEmployee();
+                    break;
+                case 3:
+                    searchById();
+                    break;
+                case 4:
+                    searchByName();
+                    break;
+                case 5:
+                    deleteById();
+                    break;
+                case 6:
+                    System.out.println("Terima Kasih!");
+                    break;
+                default:
+                    System.out.println("Pilihan Tidak Tersedia!");
+            }
+        }
+
+    }
 }

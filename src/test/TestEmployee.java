@@ -114,7 +114,8 @@ public class TestEmployee {
         // getAll();
         // testGetAll();
         // deleteById(207);
-        testDeleteById();
+        // testDeleteById();
+        controller.viewAllEmployee();
 
     }   
 

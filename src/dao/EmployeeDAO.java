@@ -117,4 +117,39 @@ public class EmployeeDAO {
             }
     }
 
+    public List<Employee> getAll(){
+
+        String sql = "SELECT employee.id, first_name, last_name, email, phone_number," +
+                    " hire_date, salary, commission_pct, employee.manager, job.id, department," +
+                    " job.title, job.min_salary, job.max_salary," +
+                    " departmen.id , departmen.name" +
+                    " FROM employee" +
+                    " JOIN job ON employee.job = job.id" +
+                    " JOIN departmen ON  employee.department = departmen.id";
+        try(PreparedStatement statement = connect.getConnect().prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery()){
+
+                List<Employee> list = new ArrayList<>();
+
+                while (resultSet.next()) {
+                    Employee employee = new Employee();
+                    employee.setId(resultSet.getInt("id"));
+                    employee.setFirstName(resultSet.getString("first_name"));
+                    employee.setLastName(resultSet.getString("last_name"));
+                    employee.setEmail(resultSet.getString("email"));
+                    employee.setPhoneNumber(resultSet.getString("phone_number"));
+                    employee.setHireDate(resultSet.getDate("hire_date"));
+                    employee.setSalary(resultSet.getInt("salary"));
+                    employee.setCommission(resultSet.getDouble("commission_pct"));
+                    employee.setManager(resultSet.getInt("manager"));
+                    employee.setJob(new Job(resultSet.getString("job.id"), resultSet.getString("job.title"), resultSet.getInt("job.min_salary"),resultSet.getInt("job.max_salary")));
+                    employee.setDepartement(new Departement(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getInt("manager")));
+                    list.add(employee);
+                }
+            return list;
+        }catch(SQLException exception){
+            throw new IllegalStateException(exception.getMessage());
+        }
+    }
+
 }

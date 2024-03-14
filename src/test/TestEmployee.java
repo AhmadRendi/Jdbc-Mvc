@@ -91,6 +91,14 @@ public class TestEmployee {
         }
     }
 
+    public static void getAll(){
+        List<Employee> list = employeeDAO.getAll();
+
+        for (Employee value : list){
+            System.out.println(value.getFirstName());
+        }
+    }
+
     public static void main(String[] args) {
         // testInsert();
         // testInsertPartTwo();
@@ -98,7 +106,8 @@ public class TestEmployee {
         // searchById();
         // testSearchById();
         // searchByName("S");
-        testSearchByName();
+        // testSearchByName();
+        getAll();
     }   
 
 
